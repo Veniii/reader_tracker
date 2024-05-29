@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:reader_tracker/screens/favourites_screen.dart';
+import 'package:reader_tracker/screens/home_screen.dart';
+import 'package:reader_tracker/screens/saved_screen.dart';
 
 void main() {
   runApp(const MyApp());
@@ -32,6 +35,13 @@ class MyHomePage extends StatefulWidget {
 
 class _MyHomePageState extends State<MyHomePage> {
   int _currentIndex = 0;
+
+  final List<Widget> _screens = [
+    const HomeScreen(),
+    const SavedScreen(),
+    const FavouritesScreen()
+  ];
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -39,18 +49,17 @@ class _MyHomePageState extends State<MyHomePage> {
         backgroundColor: Theme.of(context).colorScheme.inversePrimary,
         title: Text('A.Reader'),
         ),
-      body: const Column(
-        children: [Text("Hello")]
-        ),
+      body: _screens[_currentIndex],
         bottomNavigationBar: BottomNavigationBar(
           currentIndex: _currentIndex,
+          backgroundColor: Theme.of(context).colorScheme.inversePrimary,
           items: const <BottomNavigationBarItem> [
             BottomNavigationBarItem(icon: Icon(Icons.home), label: 'Home'),
             BottomNavigationBarItem(icon: Icon(Icons.save), label: 'Saved'),
             BottomNavigationBarItem(icon: Icon(Icons.favorite), label: 'Favourite')
             ],
             selectedItemColor: Theme.of(context).colorScheme.onPrimary,
-            unselectedItemColor: Theme.of(context).colorScheme.onPrimary,
+            unselectedItemColor: Theme.of(context).colorScheme.onSurfaceVariant,
             onTap: (value) {
               setState(() {
                 _currentIndex = value;
