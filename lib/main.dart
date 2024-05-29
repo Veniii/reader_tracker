@@ -41,6 +41,13 @@ class _MyHomePageState extends State<MyHomePage> {
       body: const Column(
         children: [Text("Hello")]
         ),
+        bottomNavigationBar: BottomNavigationBar(
+          items: const <BottomNavigationBarItem> [
+            BottomNavigationBarItem(icon: Icon(Icons.home), label: 'Home'),
+            BottomNavigationBarItem(icon: Icon(Icons.save), label: 'Saved'),
+            BottomNavigationBarItem(icon: Icon(Icons.favorite), label: 'Favourite')
+            ],
+          ),
     );
   }
 }
