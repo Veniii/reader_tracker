@@ -38,20 +38,11 @@ class MyHomePage extends StatefulWidget {
 class _MyHomePageState extends State<MyHomePage> {
   int _currentIndex = 0;
 
-  Network network = Network();
-
-  Future<void> _searchBooks(String query) async {
-    try {
-      List<Book> books = await network.searchBooks(query);
-      print("Books: ${books.toString()}");
-    } catch (e) {}
-  }
-
-  @override
-  void initState() {
-    _searchBooks('Android');
-    super.initState();
-  }
+  // @override
+  // void initState() {
+  //   _searchBooks('Android');
+  //   super.initState();
+  // }
 
   final List<Widget> _screens = [
     const HomeScreen(),
