@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 import 'package:reader_tracker/models/book.dart';
 import 'package:reader_tracker/network/network.dart';
 
@@ -34,14 +35,36 @@ class _HomeScreenState extends State<HomeScreen> {
       body: Center(
         child: Column(
           children: [
-            TextField(
-              decoration: InputDecoration(
-                border: OutlineInputBorder(
-                  borderRadius: BorderRadius.all(Radius.circular(10))
-                )
+            Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: TextField(
+                decoration: const InputDecoration(
+                  hintText: 'Search for a book',
+                  suffixIcon: Icon(Icons.search),
+                  border: OutlineInputBorder(
+                    borderRadius: BorderRadius.all(Radius.circular(10)),
+                    
+                  )
+                ),
+                onSubmitted: (query) => _searchBooks(query),
+              ),
+            ),
+            Expanded(
+              child: Container(
+                width: double.infinity,
+                child: ListView.builder(
+                  itemCount: _books.length,
+                  itemBuilder: (context, index) {
+                    Book book = _books[index];
+                  return ListTile(
+                    title: Text(book.title),
+                    subtitle: Text(book.authors.join(', & ') ?? ''),
+                  );
+                  }
+                ),
               ),
             )
-          ]
+          ],
          )
         )
 
