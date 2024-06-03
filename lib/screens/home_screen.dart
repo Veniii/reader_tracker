@@ -57,11 +57,20 @@ class _HomeScreenState extends State<HomeScreen> {
                 itemBuilder: (context, index) {
                   Book book = _books[index];
                   return Container(
+                    margin: const EdgeInsets.all(8),
                     decoration: BoxDecoration(
                       color: Theme.of(context).colorScheme.surfaceVariant,
                       borderRadius: const BorderRadius.all(Radius.circular(10))),
                       child: Column(children: [
-                        Image.network(book.imageLinks['thumbnail'] ?? '')
+                        Padding(
+                          padding: const EdgeInsets.all(18.0),
+                          child: Image.network(book.imageLinks['thumbnail'] ?? ''),
+                        ),
+                        Padding(
+                          padding: const EdgeInsets.all(8.0),
+                          child: Text(book.title, style: Theme.of(context).textTheme.titleSmall,),
+                        ),
+                        Text(book.authors.join(', & '))
                       ],),
                   );
                 }))
