@@ -71,7 +71,8 @@ class _HomeScreenState extends State<HomeScreen> {
                           child: Text(
                             book.title, 
                             style: Theme.of(context).textTheme.titleSmall,
-                            overflow: TextOverflow.ellipsis
+                            overflow: TextOverflow.ellipsis,
+                            maxLines: 1,
                             ),
                         ),
                         Padding(
@@ -80,6 +81,7 @@ class _HomeScreenState extends State<HomeScreen> {
                             book.authors.join(', & '),
                             style: Theme.of(context).textTheme.bodySmall,
                             overflow: TextOverflow.ellipsis,
+                            maxLines: 1,
                           )
                         )
                       ],),
