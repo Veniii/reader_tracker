@@ -68,9 +68,20 @@ class _HomeScreenState extends State<HomeScreen> {
                         ),
                         Padding(
                           padding: const EdgeInsets.all(8.0),
-                          child: Text(book.title, style: Theme.of(context).textTheme.titleSmall,),
+                          child: Text(
+                            book.title, 
+                            style: Theme.of(context).textTheme.titleSmall,
+                            overflow: TextOverflow.ellipsis
+                            ),
                         ),
-                        Text(book.authors.join(', & '))
+                        Padding(
+                          padding: const EdgeInsets.all(8.0),
+                          child: Text(
+                            book.authors.join(', & '),
+                            style: Theme.of(context).textTheme.bodySmall,
+                            overflow: TextOverflow.ellipsis,
+                          )
+                        )
                       ],),
                   );
                 }))
