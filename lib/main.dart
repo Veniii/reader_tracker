@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:reader_tracker/models/book.dart';
 import 'package:reader_tracker/network/network.dart';
+import 'package:reader_tracker/screens/books_details.dart';
 import 'package:reader_tracker/screens/favourites_screen.dart';
 import 'package:reader_tracker/screens/home_screen.dart';
 import 'package:reader_tracker/screens/saved_screen.dart';
@@ -23,6 +24,13 @@ class MyApp extends StatelessWidget {
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.pinkAccent),
         useMaterial3: true,
       ),
+      initialRoute: '/',
+      routes: {
+        '/home': (context) => HomeScreen(),
+        '/saved': (context) => SavedScreen(),
+        '/favourites': (context) => FavouritesScreen(),
+        '/details': (context) => BookDetailsScreen(),
+      },
       home: const MyHomePage(),
     );
   }

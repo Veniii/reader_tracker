@@ -65,7 +65,8 @@ class _HomeScreenState extends State<HomeScreen> {
                       child: GestureDetector(
                         onTap: () {
                           //Navigate to details screen
-                          Navigator.push(context, MaterialPageRoute(builder: ((context) => const BookDetailsScreen())));
+                          Navigator.pushNamed(context, '/details');
+                          // Navigator.push(context, MaterialPageRoute(builder: ((context) => const BookDetailsScreen())));
                         },
                         child: Column(children: [
                           Padding(
