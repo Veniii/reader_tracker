@@ -18,7 +18,7 @@ class _BookDetailsScreenState extends State<BookDetailsScreen> {
 
     return Scaffold(
       appBar: AppBar(
-        title: Text('book.title'),
+        title: Text(book.title),
       ),
     );
   }
