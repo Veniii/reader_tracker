@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:reader_tracker/db/database_helper.dart';
 import 'package:reader_tracker/models/book.dart';
 import 'package:reader_tracker/utils/book_details_arguments.dart';
 
@@ -49,14 +50,22 @@ class _BookDetailsScreenState extends State<BookDetailsScreen> {
                   ),
                   Text('Page Count: ${book.pageCount}', style: theme.bodySmall),
                   Text('Language: ${book.language}', style: theme.bodySmall),
-
                   const SizedBox(height: 5),
-
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                     children: [
                       ElevatedButton(
-                        onPressed: () {}, 
+                        onPressed: () async {
+                          // save a book to the database
+                          try {
+                            int savedInt = await DatabaseHelper.instance.insert(book);
+                            SnackBar snackBar = SnackBar(content: Text("Book Saved $savedInt"));
+                            ScaffoldMessenger.of(context).showSnackBar(snackBar);                      
+
+                          } catch (e) {
+                            print("Error: $e");
+                          }
+                        }, 
                         child: Text('Save')
                       ),
                       ElevatedButton.icon(                       
