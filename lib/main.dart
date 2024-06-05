@@ -26,10 +26,10 @@ class MyApp extends StatelessWidget {
       ),
       initialRoute: '/',
       routes: {
-        '/home': (context) => HomeScreen(),
-        '/saved': (context) => SavedScreen(),
-        '/favourites': (context) => FavouritesScreen(),
-        '/details': (context) => BookDetailsScreen(),
+        '/home': (context) => const HomeScreen(),
+        '/saved': (context) => const SavedScreen(),
+        '/favourites': (context) => const FavouritesScreen(),
+        '/details': (context) => const BookDetailsScreen(),
       },
       home: const MyHomePage(),
     );
@@ -63,7 +63,7 @@ class _MyHomePageState extends State<MyHomePage> {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Theme.of(context).colorScheme.inversePrimary,
-        title: Text('A.Reader'),
+        title: const Text('A.Reader'),
         ),
       body: _screens[_currentIndex],
         bottomNavigationBar: BottomNavigationBar(
