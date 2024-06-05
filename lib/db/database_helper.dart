@@ -55,10 +55,10 @@ class DatabaseHelper {
     return books.isNotEmpty ? books.map((bookData) => Book.fromJsonDatabase(bookData)).toList() : [];
   }
 
-  Future<int> toggleFavouriteStatus(String id, bool isFavorite) async {
+  Future<int> toggleFavouriteStatus(String id, bool isFavourite) async {
     Database db = await instance.database;
     return await db.update(_tableName, {
-      'favorite': isFavorite ? 1 : 0}, 
+      'favorite': isFavourite ? 1 : 0}, 
       where: 'id = ?',
       whereArgs: [id]);
   }
@@ -66,6 +66,13 @@ class DatabaseHelper {
   Future<int> deleteBook(String id) async {
     Database db = await instance.database;
     return await db.delete(_tableName, where: 'id =? ', whereArgs: [id]);
+  }
+
+  // Get favorite books
+  Future<List<Book>> getFavourites() async {
+    Database db = await instance.database;
+    var favBooks = await db.query(_tableName, where: 'isFavourite = ?', whereArgs: [1]);
+    return favBooks.isNotEmpty ? favBooks.map((bookData) => Book.fromJsonDatabase(bookData)).toList() : [];
   }
 
 

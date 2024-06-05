@@ -46,7 +46,7 @@ class _SavedScreenState extends State<SavedScreen> {
                       onPressed: () async {
                       // toggle the favourite flag
                       await DatabaseHelper.instance
-                      .toggleFavouriteStatus(book.id, book.isFavorite)
+                      .toggleFavouriteStatus(book.id, !book.isFavorite)
                       .then((value) => print("Item Favoured!!! $value"));
                       }, 
                       icon: const Icon(Icons.favorite), label: const Text("Add to favourites"))
