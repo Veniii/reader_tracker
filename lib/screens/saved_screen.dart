@@ -17,7 +17,7 @@ class _SavedScreenState extends State<SavedScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Saved'),
+        title: const Text('Saved'),
       ),
       body: FutureBuilder<List<Book>>(
         future: DatabaseHelper.instance.readAllBooks(), 
@@ -26,8 +26,26 @@ class _SavedScreenState extends State<SavedScreen> {
           itemCount: snapshot.data!.length,
           itemBuilder: (context, index) {
             Book book = snapshot.data![index];
-            return ListTile(
-              title: Text(book.title),
+            return Card(
+              child: ListTile(
+                title: Text(book.title),
+                trailing: const Icon(Icons.delete),
+                leading: Image.network(
+                  book.imageLinks['thumbnail'] ?? '', 
+                  fit: BoxFit.cover
+                ),
+                subtitle: Column(
+                  children: [
+                    Text(book.authors.join(', ')),
+                    ElevatedButton.icon(onPressed: () async {
+                      // toggle the favourite flag
+
+                    }, icon: const Icon(Icons.favorite), label: const Text("Add to favourites"))
+                  ],
+                ),
+
+                
+              ),
             );
 
         }) 
