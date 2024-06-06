@@ -16,6 +16,8 @@ class _BookDetailsScreenState extends State<BookDetailsScreen> {
 
     final args = ModalRoute.of(context)!.settings.arguments as BookDetailsArguments;
     final Book book = args.itemBook;
+    final bool isFromSavedScreen = args.isFromSavedScreen;
+    
     final theme = Theme.of(context).textTheme;
 
     return Scaffold(
@@ -52,9 +54,9 @@ class _BookDetailsScreenState extends State<BookDetailsScreen> {
                   Text('Language: ${book.language}', style: theme.bodySmall),
                   const SizedBox(height: 5),
                   Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                    mainAxisAlignment: !isFromSavedScreen ? MainAxisAlignment.spaceEvenly : MainAxisAlignment.center,
                     children: [
-                      ElevatedButton(
+                      !isFromSavedScreen ? ElevatedButton(
                         onPressed: () async {
                           // save a book to the database
                           try {
@@ -67,7 +69,7 @@ class _BookDetailsScreenState extends State<BookDetailsScreen> {
                           }
                         }, 
                         child: Text('Save')
-                      ),
+                      ) : const SizedBox(),
                       ElevatedButton.icon(                       
                         onPressed: () async {
                           

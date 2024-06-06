@@ -28,7 +28,7 @@ class GridViewWidget extends StatelessWidget {
                   //Navigate to details screen
                   Navigator.pushNamed(
                     context, '/details',
-                    arguments: BookDetailsArguments(itemBook: book)
+                    arguments: BookDetailsArguments(itemBook: book, isFromSavedScreen: false)
                     );
                   
     
