@@ -52,11 +52,10 @@ class _BookDetailsScreenState extends State<BookDetailsScreen> {
                   ),
                   Text('Page Count: ${book.pageCount}', style: theme.bodySmall),
                   Text('Language: ${book.language}', style: theme.bodySmall),
-                  const SizedBox(height: 5),
-                  Row(
-                    mainAxisAlignment: !isFromSavedScreen ? MainAxisAlignment.spaceEvenly : MainAxisAlignment.center,
-                    children: [
-                      !isFromSavedScreen ? ElevatedButton(
+                  const SizedBox(height: 7),
+
+                  SizedBox(
+                    child: !isFromSavedScreen ? ElevatedButton(
                         onPressed: () async {
                           // save a book to the database
                           try {
@@ -68,17 +67,40 @@ class _BookDetailsScreenState extends State<BookDetailsScreen> {
                             print("Error: $e");
                           }
                         }, 
-                        child: Text('Save')
-                      ) : const SizedBox(),
-                      ElevatedButton.icon(                       
-                        onPressed: () async {
-                          
-                        }, 
+                        child: Text('Save')) : ElevatedButton.icon(
+                        onPressed: () async {}, 
                         icon: Icon(Icons.favorite),
                         label: Text('Favourite'))
-                    ],              
+                    
+                    
                   ),
-                  const SizedBox(height: 10),
+
+                  // Row(
+                  //   mainAxisAlignment: !isFromSavedScreen ? MainAxisAlignment.spaceEvenly : MainAxisAlignment.center,
+                  //   children: [
+                  //     !isFromSavedScreen ? ElevatedButton(
+                  //       onPressed: () async {
+                  //         // save a book to the database
+                  //         try {
+                  //           int savedInt = await DatabaseHelper.instance.insert(book);
+                  //           SnackBar snackBar = SnackBar(content: Text("Book Saved $savedInt"));
+                  //           ScaffoldMessenger.of(context).showSnackBar(snackBar);                      
+
+                  //         } catch (e) {
+                  //           print("Error: $e");
+                  //         }
+                  //       }, 
+                  //       child: Text('Save')
+                  //     ) : const SizedBox(),
+                  //     ElevatedButton.icon(                       
+                  //       onPressed: () async {
+                          
+                  //       }, 
+                  //       icon: Icon(Icons.favorite),
+                  //       label: Text('Favourite'))
+                  //   ],              
+                  // ),
+                  const SizedBox(height: 12),
                   Text('Description', style: theme.titleMedium),
                   const SizedBox(height: 5),
                   Container(
