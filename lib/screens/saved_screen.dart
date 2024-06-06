@@ -52,9 +52,12 @@ class _SavedScreenState extends State<SavedScreen> {
                       ElevatedButton.icon(
                         onPressed: () async {
                         // toggle the favorite flag
+                        book.isFavorite = !book.isFavorite;
                         await DatabaseHelper.instance
-                        .toggleFavoriteStatus(book.id, !book.isFavorite)
-                        .then((value) => print("Item Favoured!!! $value"));
+                        .toggleFavoriteStatus(book.id, book.isFavorite);
+                        //refresh the UI
+                        setState(() {});
+                        // .then((value) => print("Item Favoured!!! $value"));
                         }, 
                         icon: Icon(
                           book.isFavorite ? Icons.favorite : Icons.favorite_outline, 
