@@ -44,12 +44,12 @@ class _SavedScreenState extends State<SavedScreen> {
                     Text(book.authors.join(', ')),
                     ElevatedButton.icon(
                       onPressed: () async {
-                      // toggle the favourite flag
+                      // toggle the favorite flag
                       await DatabaseHelper.instance
-                      .toggleFavouriteStatus(book.id, !book.isFavorite)
+                      .toggleFavoriteStatus(book.id, !book.isFavorite)
                       .then((value) => print("Item Favoured!!! $value"));
                       }, 
-                      icon: const Icon(Icons.favorite), label: const Text("Add to favourites"))
+                      icon: const Icon(Icons.favorite), label: const Text("Add to favorites"))
                   ],
                 ),
 

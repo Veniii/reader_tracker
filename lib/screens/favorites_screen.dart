@@ -2,20 +2,20 @@ import 'package:flutter/material.dart';
 import 'package:reader_tracker/db/database_helper.dart';
 import 'package:reader_tracker/models/book.dart';
 
-class FavouritesScreen extends StatefulWidget {
-  const FavouritesScreen({super.key});
+class FavoritesScreen extends StatefulWidget {
+  const FavoritesScreen({super.key});
 
   @override
-  State<FavouritesScreen> createState() => _FavouritesScreenState();
+  State<FavoritesScreen> createState() => _FavoritesScreenState();
 }
 
-class _FavouritesScreenState extends State<FavouritesScreen> {
+class _FavoritesScreenState extends State<FavoritesScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
       ),
-      body: FutureBuilder(future: DatabaseHelper.instance.getFavourites(), builder: ((context, snapshot) {
+      body: FutureBuilder(future: DatabaseHelper.instance.getFavorites(), builder: ((context, snapshot) {
         if (snapshot.connectionState == ConnectionState.waiting) {
           return const Center(
             child: CircularProgressIndicator(),

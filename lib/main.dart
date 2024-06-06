@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:reader_tracker/models/book.dart';
 import 'package:reader_tracker/network/network.dart';
 import 'package:reader_tracker/screens/books_details.dart';
-import 'package:reader_tracker/screens/favourites_screen.dart';
+import 'package:reader_tracker/screens/favorites_screen.dart';
 import 'package:reader_tracker/screens/home_screen.dart';
 import 'package:reader_tracker/screens/saved_screen.dart';
 
@@ -28,7 +28,7 @@ class MyApp extends StatelessWidget {
       routes: {
         '/home': (context) => const HomeScreen(),
         '/saved': (context) => const SavedScreen(),
-        '/favourites': (context) => const FavouritesScreen(),
+        '/favourites': (context) => const FavoritesScreen(),
         '/details': (context) => const BookDetailsScreen(),
       },
       home: const MyHomePage(),
@@ -55,7 +55,7 @@ class _MyHomePageState extends State<MyHomePage> {
   final List<Widget> _screens = [
     const HomeScreen(),
     const SavedScreen(),
-    const FavouritesScreen()
+    const FavoritesScreen()
   ];
 
   @override
@@ -72,7 +72,7 @@ class _MyHomePageState extends State<MyHomePage> {
           items: const <BottomNavigationBarItem> [
             BottomNavigationBarItem(icon: Icon(Icons.home), label: 'Home'),
             BottomNavigationBarItem(icon: Icon(Icons.save), label: 'Saved'),
-            BottomNavigationBarItem(icon: Icon(Icons.favorite), label: 'Favourite')
+            BottomNavigationBarItem(icon: Icon(Icons.favorite), label: 'Favorite')
             ],
             selectedItemColor: Theme.of(context).colorScheme.onPrimary,
             unselectedItemColor: Theme.of(context).colorScheme.onSurfaceVariant,
