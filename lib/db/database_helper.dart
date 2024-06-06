@@ -20,7 +20,12 @@ class DatabaseHelper {
   _initDatabase() async {
     // devicedata/databasename.db
     String path = join(await getDatabasesPath(), _databaseName);
-    return await openDatabase(path, version: _databaseVersion, onCreate: _onCreate);
+    return await openDatabase(
+      path, 
+      version: _databaseVersion, 
+      onCreate: _onCreate,
+
+      );
   }
 
   Future _onCreate(Database db, int version) async {
@@ -43,6 +48,7 @@ class DatabaseHelper {
 
     ''');
   }
+
 
   Future<int> insert(Book book) async {
     Database db = await instance.database;
@@ -71,7 +77,7 @@ class DatabaseHelper {
   // Get favorite books
   Future<List<Book>> getFavorites() async {
     Database db = await instance.database;
-    var favBooks = await db.query(_tableName, where: 'isFavorite = ?', whereArgs: [1]);
+    var favBooks = await db.query(_tableName, where: 'favorite = ?', whereArgs: [1]);
     return favBooks.isNotEmpty ? favBooks.map((bookData) => Book.fromJsonDatabase(bookData)).toList() : [];
   }
 
