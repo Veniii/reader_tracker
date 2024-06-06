@@ -56,7 +56,11 @@ class _SavedScreenState extends State<SavedScreen> {
                         .toggleFavoriteStatus(book.id, !book.isFavorite)
                         .then((value) => print("Item Favoured!!! $value"));
                         }, 
-                        icon: const Icon(Icons.favorite), label: const Text("Add to favorites"))
+                        icon: Icon(
+                          book.isFavorite ? Icons.favorite : Icons.favorite_outline, 
+                          color: book.isFavorite ? Colors.red : null
+                          ), 
+                          label: Text(!book.isFavorite ? "Add to favorites" : "Favorites"))
                     ],
                   ),
               
